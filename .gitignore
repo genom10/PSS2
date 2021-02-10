@@ -1,0 +1,17 @@
+
+
+HW1/CMakeLists.txt
+
+HW1/.idea/
+
+HW1/cmake-build-debug/Makefile
+
+HW1/cmake-build-debug/CMakeFiles/
+
+HW1/cmake-build-debug/Testing/
+
+HW1/cmake-build-debug/cmake_install.cmake
+
+HW1/cmake-build-debug/CMakeCache.txt
+
+HW1/cmake-build-debug/HW1.cbp
