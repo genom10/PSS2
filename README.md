@@ -1,1 +1,1 @@
-PSS2
+There's not much here yet. Check [HW1 branch](https://github.com/genom10/PSS2/tree/HW1) instead!
