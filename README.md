@@ -5,5 +5,9 @@ All progams are targeted for C++17 and run with default set of dependencies.
 Ready-to-go executables are placed in corresponding `cmake-build-debug`
 
 ## Shortcuts for .cpp files:
+<<<<<<< HEAD
 * `HW1`
 [Task](https://github.com/genom10/PSS2/blob/HW1/HW1/PSS2_hw_01.pdf) [Solution](https://github.com/genom10/PSS2/blob/HW1/HW1/main.cpp)
+=======
+* `[HW1](/HW1/main.cpp)`
+>>>>>>> HW1
