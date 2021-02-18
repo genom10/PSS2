@@ -5,7 +5,7 @@ using namespace std;
 FILE * inp;
 FILE * outp;
 
-bool caseInsensetiveComporator (char a, char b){
+bool caseInsensetiveComparator (char a, char b){
     a = (a >= 'A' && a <= 'Z') ? (a - 'A' + 'a') : a;
     b = (b >= 'A' && b <= 'Z') ? (b - 'A' + 'a') : b;
     return a == b;
@@ -13,7 +13,7 @@ bool caseInsensetiveComporator (char a, char b){
 
 bool checkForWord(char *text, char (&request)[100]) { //compares word at the beginning of the text and request
     for (int i = 0; request[i] != '\000'; i++){
-        if (!caseInsensetiveComporator(text[i], request[i]))
+        if (!caseInsensetiveComparator(text[i], request[i]))
             return false; //stop if found difference
     }
     return true; //no differences. words are matched
