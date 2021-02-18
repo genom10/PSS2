@@ -25,10 +25,10 @@ char toUpper(char a){
 
 void printAllMatches(char (&text)[5001], char (&request)[100]) {
     int sentenceNumber = 1;
-    int sentencePos[100];//positions of sentences' starts
+    int sentencePos[1000];//positions of sentences' starts
     sentencePos[0] = 0;
     int matchesNumber = 0;
-    int matchesPos[50];//positions of words matching 'request'
+    int matchesPos[500];//positions of words matching 'request'
     int i;
     for (i = 0; text[i] != '\000'; i++){
         if(checkForWord(text, request))
