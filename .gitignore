@@ -15,3 +15,19 @@ HW1/cmake-build-debug/cmake_install.cmake
 HW1/cmake-build-debug/CMakeCache.txt
 
 HW1/cmake-build-debug/HW1.cbp
+
+HW2/CMakeLists.txt
+
+HW2/.idea/
+
+HW2/cmake-build-debug/Makefile
+
+HW2/cmake-build-debug/CMakeFiles/
+
+HW2/cmake-build-debug/Testing/
+
+HW2/cmake-build-debug/cmake_install.cmake
+
+HW2/cmake-build-debug/CMakeCache.txt
+
+HW2/cmake-build-debug/HW2.cbp
