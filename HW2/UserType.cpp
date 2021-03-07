@@ -1,5 +1,5 @@
 //
-// Created by egord on 07.03.2021.
+// Created by genom10 on 07.03.2021.
 //
 
 #include "UserType.h"
@@ -9,7 +9,7 @@ static std::map<UserType::Type, std::set<AccessLevel::Level>> accessMap={
         {UserType::professor, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow, AccessLevel::red}},
         {UserType::lab_employee, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow}},
         {UserType::director, {AccessLevel::no_level, AccessLevel::yellow, AccessLevel::red}},
-        {UserType::admin, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow, AccessLevel::red, AccessLevel::absolute}},
+        {UserType::admin, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow, AccessLevel::red}},
 };
 
 bool UserType::hasAccessTo(UserType::Type type, AccessLevel::Level level){

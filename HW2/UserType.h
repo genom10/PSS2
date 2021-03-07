@@ -1,5 +1,5 @@
 //
-// Created by egord on 07.03.2021.
+// Created by genom10 on 07.03.2021.
 //
 
 #ifndef HW2_USERTYPE_H

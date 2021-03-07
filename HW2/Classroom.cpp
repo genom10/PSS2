@@ -3,21 +3,34 @@
 //
 
 #include "Classroom.h"
-#include "AccessLevel.h"
 
-Classroom::Classroom(AccessLevel::Level level){
+Classroom::Classroom(std::string number, AccessLevel::Level level){
+    Classroom::number = std::move(number);
     accessLevel = level;
 }
 
-AccessLevel::Level Classroom::getAccessLevel(){
+const std::string &Classroom::getNumber() const {
+    return number;
+}
+
+void Classroom::setNumber(const std::string &number) {
+    Classroom::number = number;
+}
+
+AccessLevel::Level Classroom::getAccessLevel() const {
     return accessLevel;
 }
 
-std::string Classroom::getTextAccessLevel(){
+std::string Classroom::getTextAccessLevel() const{
     switch (accessLevel) {
         case AccessLevel::no_level : return "no_level";
         case AccessLevel::green : return "green";
         case AccessLevel::red : return "red";
         case AccessLevel::yellow : return "yellow";
     }
+    return "unknown level";
+}
+
+void Classroom::setAccessLevel(AccessLevel::Level accessLevel) {
+    Classroom::accessLevel = accessLevel;
 }

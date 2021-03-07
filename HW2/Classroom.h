@@ -11,11 +11,15 @@
 
 class Classroom {
 private:
+    std::string number;
     AccessLevel::Level accessLevel;
 public:
-    Classroom(AccessLevel::Level level);
-    AccessLevel::Level getAccessLevel();
-    std::string getTextAccessLevel();
+    Classroom(std::string number, AccessLevel::Level level);
+    const std::string &getNumber() const;
+    void setNumber(const std::string &number);
+    AccessLevel::Level getAccessLevel() const;
+    std::string getTextAccessLevel() const;
+    void setAccessLevel(AccessLevel::Level accessLevel);
 };
 
 #endif //HW2_CLASSROOM_H
