@@ -77,7 +77,7 @@ void User::f() {
     std::cout << "why would you call me?";
 }
 
-const std::string User::getBio() const {
+std::string User::getBio() const {
     return getName()+" is a "+getTextUserType()+"\n"
-    +"he was registered by "+getCreator()+" and currently "+(getRoom() != -1 ? "lives in room #"+std::to_string(getRoom()) : "is homeless")+"\n";
+    +"he/she was registered by "+getCreator()+" and currently "+(getRoom() != -1 ? "lives in room #"+std::to_string(getRoom()) : "is homeless")+"\n";
 }

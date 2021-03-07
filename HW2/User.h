@@ -31,7 +31,7 @@ public:
     const std::string &getCreator() const;
     void setCreator(const std::string &creator);
     const std::string &getName() const;
-    const std::string getBio() const;
+    std::string getBio() const;
     User(UserType::Type type, std::string name, std::string creator);
 };
 
