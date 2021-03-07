@@ -23,7 +23,7 @@ protected:
 public:
     UserType::Type getUserType() const;
     void setUserType(UserType::Type userType);
-    std::string getTextUserType();
+    std::string getTextUserType() const;
     std::string getTextUserType(UserType::Type userType);
     bool hasAccessTo(const Classroom& classroom);
     int getRoom() const;
@@ -31,6 +31,7 @@ public:
     const std::string &getCreator() const;
     void setCreator(const std::string &creator);
     const std::string &getName() const;
+    const std::string getBio() const;
     User(UserType::Type type, std::string name, std::string creator);
 };
 

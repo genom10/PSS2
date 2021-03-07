@@ -42,5 +42,9 @@ int main() {
     }
     admin1->hasAccessTo(*classrooms[0]);
     students[3]->hasAccessTo(*classrooms[15]);
+
+    cout << admin1->getBio();
+    admin1->setRoom(404);
+    cout << admin1->getBio();
     return 0;
 }

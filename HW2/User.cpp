@@ -23,7 +23,7 @@ void User::setUserType(UserType::Type userType) {
     User::type = userType;
 }
 
-std::string User::getTextUserType() {
+std::string User::getTextUserType() const{
     switch(User::type){
         case UserType::student : return "student";
         case UserType::admin : return "admin";
@@ -71,6 +71,13 @@ void User::setCreator(const std::string &creator) {
     User::creator = creator;
 }
 
+
+
 void User::f() {
     std::cout << "why would you call me?";
+}
+
+const std::string User::getBio() const {
+    return getName()+" is a "+getTextUserType()+"\n"
+    +"he was registered by "+getCreator()+" and currently "+(getRoom() != -1 ? "lives in room #"+std::to_string(getRoom()) : "is homeless")+"\n";
 }
