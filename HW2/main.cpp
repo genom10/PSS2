@@ -7,6 +7,7 @@
 #include "User.h"
 #include "Admin.h"
 #include "Professor.h"
+#include "Director.h"
 #include <vector>
 #include <string>
 
@@ -51,6 +52,20 @@ int main() {
         professors.push_back(dynamic_cast<Professor*>(admin2->createUser(UserType::professor,"professor "+to_string(i))));
     }
 
+    vector<Director*> directors;
+    directors.reserve(8);
+    directors.push_back(dynamic_cast<Director*>(admin1->createUser(UserType::director,"director 0")));
+    auto director = directors[0];
+
+    vector<User*> lab_employees;
+    students.reserve(8);
+    for (int i = 0; i < 4; i++){
+        students.push_back(admin1->createUser(UserType::lab_employee,"lab_employee "+to_string(i)));
+    }
+    for (int i = 4; i < 8; i++){
+        students.push_back(admin2->createUser(UserType::lab_employee,"lab_employee "+to_string(i)));
+    }
+
 
     admin1->hasAccessTo(*classrooms[0]);
     students[3]->hasAccessTo(*classrooms[15]);
@@ -59,5 +74,9 @@ int main() {
     admin1->setRoom(404);
     cout << admin1->getBio() << '\n';
     cout << professors[7]->getBio() << '\n';
+    cout << students[8]->getBio();
+    director->drop(students[8], students);
+    cout << '\n';
+    cout << students[8]->getBio() << '\n';
     return 0;
 }

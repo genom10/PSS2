@@ -4,9 +4,7 @@
 
 #include "Professor.h"
 
-Professor::Professor(std::string name, std::string creator) : User(UserType::professor, std::move(name), creator) {
-    this->type = UserType::professor;
-}
+Professor::Professor(std::string name, std::string creator) : User(UserType::professor, std::move(name), creator){};
 
 const std::string &Professor::getFavJoke() const {
     return favJoke;
