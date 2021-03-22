@@ -17,3 +17,7 @@ User* Admin::createUser(UserType::Type type, std::string name){
     }
     return new User(type, std::move(name), this->getName());
 }
+
+void Admin::changeUserType(User *user, UserType::Type type) {
+    user->setUserType(type);
+}

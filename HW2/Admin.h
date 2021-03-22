@@ -12,6 +12,7 @@ class Admin: public User {
 public:
     Admin(std::string name, std::string creator);
     User* createUser(UserType::Type, std::string name);
+    void changeUserType(User*, UserType::Type);
 };
 
 
