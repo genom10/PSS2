@@ -15,7 +15,6 @@ using namespace std;
 
 int main() {
     vector<Classroom*> classrooms;
-    new Classroom("test", AccessLevel::yellow);
     for (int i = 0; i < 8; i++){
         classrooms.push_back(new Classroom("30"+to_string(i), AccessLevel::yellow));
     }
@@ -67,6 +66,14 @@ int main() {
         students.push_back(admin2->createUser(UserType::lab_employee,"lab_employee "+to_string(i)));
     }
 
+    vector<User*> guests;
+    guests.reserve(8);
+    for (int i = 0; i < 8; i++) {
+        if (i % 2)
+            guests.push_back(admin1->createUser(UserType::guest, "guest " + to_string(i)));
+        else
+            guests.push_back(admin2->createUser(UserType::guest, "guest " + to_string(i)));
+    }
 
     admin1->hasAccessTo(*classrooms[0]);
     students[3]->hasAccessTo(*classrooms[15]);
@@ -76,8 +83,27 @@ int main() {
     cout << admin1->getBio() << '\n';
     cout << professors[7]->getBio() << '\n';
     cout << students[8]->getBio();
-    director->drop(students[8], students);
+
     cout << '\n';
-    cout << students[8]->getBio() << '\n';
+    admin1->triggerEmergency();
+    admin1->hasAccessTo(*classrooms[0]);
+    students[4]->hasAccessTo(*classrooms[15]);
+    students[5]->hasAccessTo(*classrooms[0]);
+    guests[6]->hasAccessTo(*classrooms[14]);
+    guests[6]->hasAccessTo(*classrooms[13]);
+    guests[6]->hasAccessTo(*classrooms[12]);
+
+    cout << '\n';
+    admin2->stopEmergency();
+    students[4]->hasAccessTo(*classrooms[15]);
+    students[5]->hasAccessTo(*classrooms[0]);
+
+    cout << '\n';
+    director->drop(students[8], students);
+    guests[7]->hasAccessTo(*classrooms[14]);
+    guests[7]->hasAccessTo(*classrooms[13]);
+    guests[7]->hasAccessTo(*classrooms[12]);
+    cout << '\n';
+    cout << students[8]->getBio();
     return 0;
 }

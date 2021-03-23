@@ -6,7 +6,7 @@
 #include <utility>
 #include "User.h"
 
-bool User::isEmegency = false;
+bool User::isEmergency = false;
 User::User(UserType::Type type, std::string name){
     this->type = type;
     this->name = std::move(name);
@@ -25,29 +25,31 @@ void User::setUserType(UserType::Type userType) {
 }
 
 std::string User::getTextUserType() const{
-    switch(User::type){
+    switch(type){
+        case UserType::guest : return  "guest";
         case UserType::student : return "student";
         case UserType::admin : return "admin";
         case UserType::director : return "director";
         case UserType::lab_employee : return "lab_employee";
         case UserType::professor : return "professor";
+        default: return "unknown level";
     }
-    return "unknown level";
 }
 
 std::string User::getTextUserType(UserType::Type userType) {
     switch(userType){
+        case UserType::guest : return  "guest";
         case UserType::student : return "student";
         case UserType::admin : return "admin";
         case UserType::director : return "director";
         case UserType::lab_employee : return "lab_employee";
         case UserType::professor : return "professor";
+        default: return "unknown level";
     }
-    return "unknown level";
 }
 
 bool User::hasAccessTo(const Classroom& classroom) {
-    if (isEmegency){
+    if (isEmergency){
         std::cout << "Emergency situation, please leave the building immediately. " << this->getTextUserType() << ' ' << this->getName() << " passed through " << classroom.getNumber() << '\n';
         return true;
     }

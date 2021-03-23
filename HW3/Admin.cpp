@@ -25,10 +25,10 @@ void Admin::changeUserType(User *user, UserType::Type type) {
 
 void Admin::triggerEmergency() {
     std::cout << "Emergency triggered by " << this->getName() << '\n';
-    User::isEmegency = true;
+    User::isEmergency = true;
 }
 
 void Admin::stopEmergency() {
     std::cout << "Emergency stopped by " << this->getName() << '\n';
-    User::isEmegency = false;
+    User::isEmergency = false;
 }

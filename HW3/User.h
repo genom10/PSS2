@@ -13,7 +13,7 @@ class UserList;
 
 class User {
 protected:
-    static bool isEmegency;
+    static bool isEmergency;
     UserType::Type type;
     int room = -1;
     std::string creator;
