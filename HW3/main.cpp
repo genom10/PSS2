@@ -15,6 +15,7 @@ using namespace std;
 
 int main() {
     vector<Classroom*> classrooms;
+    new Classroom("test", AccessLevel::yellow);
     for (int i = 0; i < 8; i++){
         classrooms.push_back(new Classroom("30"+to_string(i), AccessLevel::yellow));
     }
@@ -25,7 +26,7 @@ int main() {
         classrooms.push_back(new Classroom("40"+to_string(i), AccessLevel::red));
     }
     for (int i = 0; i < 16; i++){
-        classrooms.push_back(new Classroom("10"+to_string(i), AccessLevel::no_level));
+        classrooms.push_back(new Classroom("10"+to_string(i), AccessLevel::blue));
     }
 
     vector<Admin*> admins;

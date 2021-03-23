@@ -9,7 +9,7 @@ namespace AccessLevel
 {
     enum Level
     {
-        green, yellow, red, no_level
+        no_level, blue, green, yellow, red
     };
 }
 
