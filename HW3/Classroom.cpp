@@ -23,7 +23,7 @@ AccessLevel::Level Classroom::getAccessLevel() const {
 
 std::string Classroom::getTextAccessLevel() const{
     switch (accessLevel) {
-        casr AccessLevel::blue : return "blue";
+        case AccessLevel::blue : return "blue";
         case AccessLevel::no_level : return "no_level";
         case AccessLevel::green : return "green";
         case AccessLevel::red : return "red";
@@ -33,5 +33,5 @@ std::string Classroom::getTextAccessLevel() const{
 }
 
 void Classroom::setAccessLevel(AccessLevel::Level accessLevel) {
-    thi->accessLevel = accessLevel;
+    this->accessLevel = accessLevel;
 }
