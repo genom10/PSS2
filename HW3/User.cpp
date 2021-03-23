@@ -6,6 +6,7 @@
 #include <utility>
 #include "User.h"
 
+bool User::isEmegency = false;
 User::User(UserType::Type type, std::string name){
     this->type = type;
     this->name = std::move(name);
@@ -46,6 +47,10 @@ std::string User::getTextUserType(UserType::Type userType) {
 }
 
 bool User::hasAccessTo(const Classroom& classroom) {
+    if (isEmegency){
+        std::cout << "Emergency situation, please leave the building immediately. " << this->getTextUserType() << ' ' << this->getName() << " passed through " << classroom.getNumber() << '\n';
+        return true;
+    }
     std::cout << this->getTextUserType() << ' ' << this->getName() << " tried to access room"
         << classroom.getNumber() << " with access level " << classroom.getTextAccessLevel() << '\n';
     return UserType::hasAccessTo(User::type, classroom.getAccessLevel());

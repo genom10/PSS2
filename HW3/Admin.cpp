@@ -2,6 +2,7 @@
 // Created by genom10 on 07.03.2021.
 //
 
+#include <iostream>
 #include "Admin.h"
 #include "User.h"
 #include "Professor.h"
@@ -20,4 +21,14 @@ User* Admin::createUser(UserType::Type type, std::string name){
 
 void Admin::changeUserType(User *user, UserType::Type type) {
     user->setUserType(type);
+}
+
+void Admin::triggerEmergency() {
+    std::cout << "Emergency triggered by " << this->getName() << '\n';
+    User::isEmegency = true;
+}
+
+void Admin::stopEmergency() {
+    std::cout << "Emergency stopped by " << this->getName() << '\n';
+    User::isEmegency = false;
 }
