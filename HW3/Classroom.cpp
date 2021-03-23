@@ -5,16 +5,16 @@
 #include "Classroom.h"
 
 Classroom::Classroom(std::string number, AccessLevel::Level level){
-    Classroom::number = std::move(number);
+    this->number = std::move(number);
     accessLevel = level;
 }
 
-const std::string &Classroom::getNumber() const {
+std::string Classroom::getNumber() const {
     return number;
 }
 
 void Classroom::setNumber(const std::string &number) {
-    Classroom::number = number;
+    this->number = number;
 }
 
 AccessLevel::Level Classroom::getAccessLevel() const {
@@ -23,6 +23,7 @@ AccessLevel::Level Classroom::getAccessLevel() const {
 
 std::string Classroom::getTextAccessLevel() const{
     switch (accessLevel) {
+        casr AccessLevel::blue : return "blue";
         case AccessLevel::no_level : return "no_level";
         case AccessLevel::green : return "green";
         case AccessLevel::red : return "red";
@@ -32,5 +33,5 @@ std::string Classroom::getTextAccessLevel() const{
 }
 
 void Classroom::setAccessLevel(AccessLevel::Level accessLevel) {
-    Classroom::accessLevel = accessLevel;
+    thi->accessLevel = accessLevel;
 }

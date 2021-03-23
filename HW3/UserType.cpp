@@ -5,11 +5,12 @@
 #include "UserType.h"
 
 static std::map<UserType::Type, std::set<AccessLevel::Level>> accessMap={
-        {UserType::student, {AccessLevel::no_level, AccessLevel::green}},
-        {UserType::professor, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow, AccessLevel::red}},
-        {UserType::lab_employee, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow}},
-        {UserType::director, {AccessLevel::no_level, AccessLevel::yellow, AccessLevel::red}},
-        {UserType::admin, {AccessLevel::no_level, AccessLevel::green, AccessLevel::yellow, AccessLevel::red}},
+        {UserType::guest, {AccessLevel::no_level, AccessLevel::blue}},
+        {UserType::student, {AccessLevel::no_level, AccessLevel::blue, AccessLevel::green}},
+        {UserType::professor, {AccessLevel::no_level, AccessLevel::blue, AccessLevel::green, AccessLevel::yellow, AccessLevel::red}},
+        {UserType::lab_employee, {AccessLevel::no_level, AccessLevel::blue, AccessLevel::green, AccessLevel::yellow}},
+        {UserType::director, {AccessLevel::no_level, AccessLevel::blue, AccessLevel::yellow, AccessLevel::red}},
+        {UserType::admin, {AccessLevel::no_level, AccessLevel::blue, AccessLevel::green, AccessLevel::yellow, AccessLevel::red}},
 };
 
 bool UserType::hasAccessTo(UserType::Type type, AccessLevel::Level level){

@@ -14,7 +14,7 @@ class UserType
 public:
     enum Type
     {
-        student, professor, lab_employee, director, admin
+        guest, student, professor, lab_employee, director, admin
     };
     static bool hasAccessTo(UserType::Type, AccessLevel::Level);
 };

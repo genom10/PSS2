@@ -15,7 +15,7 @@ private:
     AccessLevel::Level accessLevel;
 public:
     Classroom(std::string number, AccessLevel::Level level);
-    const std::string &getNumber() const;
+    std::string &getNumber() const;
     void setNumber(const std::string &number);
     AccessLevel::Level getAccessLevel() const;
     std::string getTextAccessLevel() const;
