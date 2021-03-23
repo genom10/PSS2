@@ -2,8 +2,8 @@
 // Created by genom10 on 07.03.2021.
 //
 
-#ifndef HW2_USER_H
-#define HW2_USER_H
+#ifndef HW3_USER_H
+#define HW3_USER_H
 
 class UserList;
 
@@ -37,4 +37,4 @@ public:
 };
 
 
-#endif //HW2_USER_H
+#endif //HW3_USER_H

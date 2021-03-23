@@ -2,8 +2,8 @@
 // Created by genom_10 on 07.03.2021.
 //
 
-#ifndef HW2_PROFESSOR_H
-#define HW2_PROFESSOR_H
+#ifndef HW3_PROFESSOR_H
+#define HW3_PROFESSOR_H
 
 
 #include "User.h"
@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif //HW2_PROFESSOR_H
+#endif //HW3_PROFESSOR_H

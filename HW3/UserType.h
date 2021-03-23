@@ -2,8 +2,8 @@
 // Created by genom10 on 07.03.2021.
 //
 
-#ifndef HW2_USERTYPE_H
-#define HW2_USERTYPE_H
+#ifndef HW3_USERTYPE_H
+#define HW3_USERTYPE_H
 
 #include "AccessLevel.h"
 #include <map>
@@ -20,4 +20,4 @@ public:
 };
 
 
-#endif //HW2_USERTYPE_H
+#endif //HW3_USERTYPE_H

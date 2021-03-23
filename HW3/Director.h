@@ -2,8 +2,8 @@
 // Created by egord on 07.03.2021.
 //
 
-#ifndef HW2_DIRECTOR_H
-#define HW2_DIRECTOR_H
+#ifndef HW3_DIRECTOR_H
+#define HW3_DIRECTOR_H
 
 #include <vector>
 #include "User.h"
@@ -15,4 +15,4 @@ public:
 };
 
 
-#endif //HW2_DIRECTOR_H
+#endif //HW3_DIRECTOR_H

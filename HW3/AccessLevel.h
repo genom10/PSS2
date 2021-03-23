@@ -2,8 +2,8 @@
 // Created by genom10 on 07.03.2021.
 //
 
-#ifndef HW2_ACCESSLEVEL_H
-#define HW2_ACCESSLEVEL_H
+#ifndef HW3_ACCESSLEVEL_H
+#define HW3_ACCESSLEVEL_H
 
 namespace AccessLevel
 {
@@ -13,4 +13,4 @@ namespace AccessLevel
     };
 }
 
-#endif //HW2_ACCESSLEVEL_H
+#endif //HW3_ACCESSLEVEL_H
