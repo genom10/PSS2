@@ -1,3 +1,0 @@
-E:/Docs_Saves/Git/PSS2/HW4/Driver/cmake-build-debug/CMakeFiles/Driver.dir
-E:/Docs_Saves/Git/PSS2/HW4/Driver/cmake-build-debug/CMakeFiles/edit_cache.dir
-E:/Docs_Saves/Git/PSS2/HW4/Driver/cmake-build-debug/CMakeFiles/rebuild_cache.dir
