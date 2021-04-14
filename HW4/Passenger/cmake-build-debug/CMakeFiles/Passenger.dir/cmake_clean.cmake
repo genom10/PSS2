@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Passenger.dir/E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.obj"
+  "CMakeFiles/Passenger.dir/Passenger.cpp.obj"
+  "CMakeFiles/Passenger.dir/PassengerGateway.cpp.obj"
   "CMakeFiles/Passenger.dir/main.cpp.obj"
   "Passenger.exe"
   "Passenger.exe.manifest"

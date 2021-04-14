@@ -13,6 +13,8 @@ set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 set(CMAKE_DEPENDS_CHECK_CXX
+  "E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.cpp" "E:/Docs_Saves/Git/PSS2/HW4/Passenger/cmake-build-debug/CMakeFiles/Passenger.dir/Passenger.cpp.obj"
+  "E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.cpp" "E:/Docs_Saves/Git/PSS2/HW4/Passenger/cmake-build-debug/CMakeFiles/Passenger.dir/PassengerGateway.cpp.obj"
   "E:/Docs_Saves/Git/PSS2/HW4/Passenger/main.cpp" "E:/Docs_Saves/Git/PSS2/HW4/Passenger/cmake-build-debug/CMakeFiles/Passenger.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

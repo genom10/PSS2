@@ -80,6 +80,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.cpp">
+			<Option target="Passenger"/>
+		</Unit>
+		<Unit filename="E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.h">
+			<Option target="Passenger"/>
+		</Unit>
+		<Unit filename="E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.cpp">
+			<Option target="Passenger"/>
+		</Unit>
+		<Unit filename="E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.h">
+			<Option target="Passenger"/>
+		</Unit>
 		<Unit filename="E:/Docs_Saves/Git/PSS2/HW4/Passenger/main.cpp">
 			<Option target="Passenger"/>
 		</Unit>

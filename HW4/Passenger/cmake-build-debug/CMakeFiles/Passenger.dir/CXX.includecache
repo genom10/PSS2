@@ -6,11 +6,33 @@
 
 #IncludeRegexTransform: 
 
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.cpp
+Passenger.h
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.h
+
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.h
+iostream
+-
+utility
+-
+../includes/sqlite_orm.h
+E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite_orm.h
+
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.cpp
+PassengerGateway.h
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.h
+
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.h
+
 E:/Docs_Saves/Git/PSS2/HW4/Passenger/main.cpp
 iostream
 -
 ../includes/sqlite_orm.h
 E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite_orm.h
+Passenger.h
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/Passenger.h
+PassengerGateway.h
+E:/Docs_Saves/Git/PSS2/HW4/Passenger/PassengerGateway.h
 
 E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.h
 stdarg.h

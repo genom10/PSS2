@@ -3,6 +3,16 @@
 
 CMakeFiles/Passenger.dir/E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.obj: E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c
 
+CMakeFiles/Passenger.dir/Passenger.cpp.obj: ../Passenger.cpp
+CMakeFiles/Passenger.dir/Passenger.cpp.obj: ../Passenger.h
+CMakeFiles/Passenger.dir/Passenger.cpp.obj: E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.h
+CMakeFiles/Passenger.dir/Passenger.cpp.obj: E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite_orm.h
+
+CMakeFiles/Passenger.dir/PassengerGateway.cpp.obj: ../PassengerGateway.cpp
+CMakeFiles/Passenger.dir/PassengerGateway.cpp.obj: ../PassengerGateway.h
+
+CMakeFiles/Passenger.dir/main.cpp.obj: ../Passenger.h
+CMakeFiles/Passenger.dir/main.cpp.obj: ../PassengerGateway.h
 CMakeFiles/Passenger.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/Passenger.dir/main.cpp.obj: E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.h
 CMakeFiles/Passenger.dir/main.cpp.obj: E:/Docs_Saves/Git/PSS2/HW4/includes/sqlite_orm.h

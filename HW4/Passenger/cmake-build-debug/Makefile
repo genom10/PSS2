@@ -169,6 +169,60 @@ E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s
 .PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s
 
+Passenger.obj: Passenger.cpp.obj
+
+.PHONY : Passenger.obj
+
+# target to build an object file
+Passenger.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/Passenger.cpp.obj
+.PHONY : Passenger.cpp.obj
+
+Passenger.i: Passenger.cpp.i
+
+.PHONY : Passenger.i
+
+# target to preprocess a source file
+Passenger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/Passenger.cpp.i
+.PHONY : Passenger.cpp.i
+
+Passenger.s: Passenger.cpp.s
+
+.PHONY : Passenger.s
+
+# target to generate assembly for a file
+Passenger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/Passenger.cpp.s
+.PHONY : Passenger.cpp.s
+
+PassengerGateway.obj: PassengerGateway.cpp.obj
+
+.PHONY : PassengerGateway.obj
+
+# target to build an object file
+PassengerGateway.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/PassengerGateway.cpp.obj
+.PHONY : PassengerGateway.cpp.obj
+
+PassengerGateway.i: PassengerGateway.cpp.i
+
+.PHONY : PassengerGateway.i
+
+# target to preprocess a source file
+PassengerGateway.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/PassengerGateway.cpp.i
+.PHONY : PassengerGateway.cpp.i
+
+PassengerGateway.s: PassengerGateway.cpp.s
+
+.PHONY : PassengerGateway.s
+
+# target to generate assembly for a file
+PassengerGateway.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/PassengerGateway.cpp.s
+.PHONY : PassengerGateway.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -208,6 +262,12 @@ help:
 	@echo ... E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.obj
 	@echo ... E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.i
 	@echo ... E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.s
+	@echo ... Passenger.obj
+	@echo ... Passenger.i
+	@echo ... Passenger.s
+	@echo ... PassengerGateway.obj
+	@echo ... PassengerGateway.i
+	@echo ... PassengerGateway.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
