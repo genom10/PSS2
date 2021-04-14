@@ -8,37 +8,29 @@
 #include <iostream>
 #include <utility>
 #include "../includes/sqlite_orm.h"
+#include "Passenger.h"
 
 using namespace sqlite_orm;
-
-enum OrderStatus{
-    lookingForDriver,
-    driving,
-    finished,
-    emergency
-};
-
-enum CarType{
-    economy,
-    comfort,
-    comfortPlus,
-    business
-};
 
 struct Order{
     int orderID;
     int clientID;
     int driverID;
-    OrderStatus status;
+    std::string status;
     std::string addressFrom;
     std::string addressTo;
-    CarType carType;
+    std::string carType;
 };
 
 class PassengerGateway{
 
 public:
-    static int makeOrder(Order);
+    static void ListAll();
+    static int makeOrder(Passenger*, Order);
+    static int calcPrice(std::string, std::string, std::string);
+    static void listHistory(Passenger*);
+    static void listActive(Passenger*);
+    static void accept(Passenger*);
 };
 
 

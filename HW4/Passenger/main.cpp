@@ -13,6 +13,7 @@ void mainMenu(Passenger*);
 void loginMenu(Passenger*);
 void regMenu(Passenger*);
 void userMenu(Passenger*);
+void activeMenu(Passenger*);
 void orderMenu(Passenger*);
 
 int main() {
@@ -25,7 +26,11 @@ int main() {
 void mainMenu(Passenger* passenger){
     int choice;
     while (true){
+        std::cout << "passengers\n";
         Passenger::ListAll();
+        std::cout << "orders\n";
+        PassengerGateway::ListAll();
+
         std::cout << "1 - login\n2 - register\n3 - exit\n";
         std::cin >> choice;
         switch (choice) {
@@ -82,7 +87,7 @@ void userMenu(Passenger* passenger){
     std::cout << "your ID is " << passenger->getID() << '\n';
     std::cout << "your rating is " << passenger->getRating() << '\n';
     while (true) {
-        std::cout << "1 - delete profile\n2-Order a ride\n3 - return";
+        std::cout << "1 - delete profile\n2 - Order a ride\n3 - See active orders\n4 - See order history\n5 - Confirm a ride\n6 - return\n";
         std::cin >> choice;
         switch (choice) {
             case 1:
@@ -92,6 +97,14 @@ void userMenu(Passenger* passenger){
                 orderMenu(passenger);
                 break;
             case 3:
+                activeMenu(passenger);
+                break;
+            case 4:
+                PassengerGateway::listHistory(passenger);
+                break;
+            case 5:
+                PassengerGateway::accept(passenger);
+            case 6:
                 return;
             default:
                 std::cout << "incorrect input\n";
@@ -99,41 +112,56 @@ void userMenu(Passenger* passenger){
     }
 }
 
+void activeMenu(Passenger* passenger){
+    PassengerGateway::listActive(passenger);
+}
+
 void orderMenu(Passenger* passenger){
-    std::cout << "type adress from:";
+    std::cout << "type address from:";
     std::string addressFrom;
     std::cin >> addressFrom;
-    std::cout << "type adress to:";
+    std::cout << "type address to:";
     std::string addressTo;
     std::cin >> addressTo;
-    std::cout << "chose car type:\n1 - economy\n2 - comfort\n3 - comfortPlus\n4 - business";
+    std::cout << "chose car type:\n1 - economy\n2 - comfort\n3 - comfortPlus\n4 - business\n";
     int carChoice;
-    CarType carType;
+    std::cin >> carChoice;
+    std::string carType;
     switch (carChoice) {
         case 1:
-            carType = CarType::economy;
+            carType = "economy";
             break;
         case 2:
-            carType = CarType::comfort;
+            carType = "comfort";
             break;
         case 3:
-            carType = CarType::comfortPlus;
+            carType = "comfortPlus";
             break;
         case 4:
-            carType = CarType::business;
+            carType = "business";
             break;
         default:
-            carType = CarType::economy;
-            std::cout << "incorrect input. You'll get economy car";
+            carType = "economy";
+            std::cout << "incorrect input. You'll get economy car\n";
     }
     Order order{
         -1,
         passenger->getID(),
         -1,
-        OrderStatus::lookingForDriver,
+        "lookingForDriver",
         addressFrom,
         addressTo,
         carType
     };
-    int id = PassengerGateway::makeOrder(order);
+    while(true){
+        std::cout << "The ride will cost " << PassengerGateway::calcPrice(addressFrom, addressTo, carType) << " do you wish to proceed? Y/N";
+        std::string confirm;
+        std::cin >> confirm;
+        if (confirm == "y" || confirm == "Y")
+            break;
+        if (confirm == "n" || confirm == "N")
+            return;
+    }
+    int orderId = PassengerGateway::makeOrder(passenger, order);
+    std::cout << "your order's ID is " << orderId << '\n';
 }

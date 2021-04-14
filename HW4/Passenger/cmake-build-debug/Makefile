@@ -58,19 +58,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\Docs_Saves\Git\PSS2\HW4\Passenger
+CMAKE_SOURCE_DIR = D:\GIT\PSS2\HW4\Passenger
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\Docs_Saves\Git\PSS2\HW4\Passenger\cmake-build-debug
+CMAKE_BINARY_DIR = D:\GIT\PSS2\HW4\Passenger\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -78,7 +78,7 @@ CMAKE_BINARY_DIR = E:\Docs_Saves\Git\PSS2\HW4\Passenger\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -89,7 +89,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Docs_Saves\Git\PSS2\HW4\Passenger\cmake-build-debug\CMakeFiles E:\Docs_Saves\Git\PSS2\HW4\Passenger\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GIT\PSS2\HW4\Passenger\cmake-build-debug\CMakeFiles D:\GIT\PSS2\HW4\Passenger\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\Docs_Saves\Git\PSS2\HW4\Passenger\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\GIT\PSS2\HW4\Passenger\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,32 +142,59 @@ Passenger/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/build
 .PHONY : Passenger/fast
 
-E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.obj: E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.obj
+D_/GIT/PSS2/HW4/includes/sqlite3.obj: D_/GIT/PSS2/HW4/includes/sqlite3.c.obj
 
-.PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.obj
+.PHONY : D_/GIT/PSS2/HW4/includes/sqlite3.obj
 
 # target to build an object file
-E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.obj
-.PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.obj
+D_/GIT/PSS2/HW4/includes/sqlite3.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/D_/GIT/PSS2/HW4/includes/sqlite3.c.obj
+.PHONY : D_/GIT/PSS2/HW4/includes/sqlite3.c.obj
 
-E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.i: E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.i
+D_/GIT/PSS2/HW4/includes/sqlite3.i: D_/GIT/PSS2/HW4/includes/sqlite3.c.i
 
-.PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.i
+.PHONY : D_/GIT/PSS2/HW4/includes/sqlite3.i
 
 # target to preprocess a source file
-E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.i
-.PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.i
+D_/GIT/PSS2/HW4/includes/sqlite3.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/D_/GIT/PSS2/HW4/includes/sqlite3.c.i
+.PHONY : D_/GIT/PSS2/HW4/includes/sqlite3.c.i
 
-E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.s: E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s
+D_/GIT/PSS2/HW4/includes/sqlite3.s: D_/GIT/PSS2/HW4/includes/sqlite3.c.s
 
-.PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.s
+.PHONY : D_/GIT/PSS2/HW4/includes/sqlite3.s
 
 # target to generate assembly for a file
-E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s
-.PHONY : E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.c.s
+D_/GIT/PSS2/HW4/includes/sqlite3.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/D_/GIT/PSS2/HW4/includes/sqlite3.c.s
+.PHONY : D_/GIT/PSS2/HW4/includes/sqlite3.c.s
+
+Driver.obj: Driver.cpp.obj
+
+.PHONY : Driver.obj
+
+# target to build an object file
+Driver.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/Driver.cpp.obj
+.PHONY : Driver.cpp.obj
+
+Driver.i: Driver.cpp.i
+
+.PHONY : Driver.i
+
+# target to preprocess a source file
+Driver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/Driver.cpp.i
+.PHONY : Driver.cpp.i
+
+Driver.s: Driver.cpp.s
+
+.PHONY : Driver.s
+
+# target to generate assembly for a file
+Driver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Passenger.dir\build.make CMakeFiles/Passenger.dir/Driver.cpp.s
+.PHONY : Driver.cpp.s
 
 Passenger.obj: Passenger.cpp.obj
 
@@ -259,9 +286,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Passenger
-	@echo ... E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.obj
-	@echo ... E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.i
-	@echo ... E_/Docs_Saves/Git/PSS2/HW4/includes/sqlite3.s
+	@echo ... D_/GIT/PSS2/HW4/includes/sqlite3.obj
+	@echo ... D_/GIT/PSS2/HW4/includes/sqlite3.i
+	@echo ... D_/GIT/PSS2/HW4/includes/sqlite3.s
+	@echo ... Driver.obj
+	@echo ... Driver.i
+	@echo ... Driver.s
 	@echo ... Passenger.obj
 	@echo ... Passenger.i
 	@echo ... Passenger.s
