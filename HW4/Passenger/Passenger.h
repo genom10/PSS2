@@ -27,6 +27,9 @@ struct PassengerRecord{
         this->password = std::move(password);
         this->name = std::move(name);
         rating = 0;
+        orderHistory = "";
+        paymentMethods = "";
+        pinnedAddresses = "";
     }
 };
 
@@ -50,7 +53,7 @@ public:
     static bool fetchLogin(std::string login);
     static Passenger logIn(std::string login, std::string password);
     static Passenger reg(std::string login, std::string password, std::string name);
-    static void remove(Passenger *passenger);
+    static void remove(Passenger *passenger); //TODO remove from Order DB
 };
 
 #endif //PASSENGER_PASSENGER_H
