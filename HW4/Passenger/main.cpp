@@ -87,7 +87,7 @@ void userMenu(Passenger* passenger){
     std::cout << "your ID is " << passenger->getID() << '\n';
     std::cout << "your rating is " << passenger->getRating() << '\n';
     while (true) {
-        std::cout << "1 - delete profile\n2 - Order a ride\n3 - See active orders\n4 - See order history\n5 - Confirm a ride\n6 - return\n";
+        std::cout << "1 - delete profile\n2 - Order a ride\n3 - See active orders\n4 - See order history\n5 - Confirm a ride\n6 - get active rides coordinates\n7 - return\n";
         std::cin >> choice;
         switch (choice) {
             case 1:
@@ -104,7 +104,11 @@ void userMenu(Passenger* passenger){
                 break;
             case 5:
                 PassengerGateway::accept(passenger);
+                break;
             case 6:
+                PassengerGateway::getRidesCoordinates(passenger);
+                break;
+            case 7:
                 return;
             default:
                 std::cout << "incorrect input\n";

@@ -140,6 +140,7 @@ void orderMenu(Driver* driver){
                 break;
             case 3:
                 DriverGateway::complete(driver);
+                break;
             case 4:
                 return;
             default:

@@ -31,6 +31,8 @@ public:
     static void listHistory(Passenger*);
     static void listActive(Passenger*);
     static void accept(Passenger*);
+    static void getRidesCoordinates(Passenger *passenger);
+    static std::string getRideCoordinates(int id);
 };
 
 

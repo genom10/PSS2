@@ -42,7 +42,6 @@ void DriverGateway::ListFit() {
                                                make_column("password", &PassengerStorage::password),
                                                make_column("name", &PassengerStorage::name),
                                                make_column("rating", &PassengerStorage::rating),
-                                               make_column("orderHistory", &PassengerStorage::orderHistory),
                                                make_column("paymentMethods", &PassengerStorage::paymentMethods),
                                                make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses)));
     orderStorage.sync_schema();
@@ -54,7 +53,7 @@ void DriverGateway::ListFit() {
             auto user = userStorage.get<PassengerStorage>(get<1>(i));
             std::cout << order.orderID << ")" << user.name << " want to ride from " << order.addressFrom << " to " << order.addressTo << " on " << order.carType << "\n";
         } catch (std::system_error error) {
-            std::cout << error.what() << '\n';
+            std::cout << error.what() << " for user with id " << get<1>(i) << '\n';
             continue;
         }
     }
@@ -80,7 +79,6 @@ void DriverGateway::ListFit(Driver& driver) {
                                                make_column("password", &PassengerStorage::password),
                                                make_column("name", &PassengerStorage::name),
                                                make_column("rating", &PassengerStorage::rating),
-                                               make_column("orderHistory", &PassengerStorage::orderHistory),
                                                make_column("paymentMethods", &PassengerStorage::paymentMethods),
                                                make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses)));
     userStorage.sync_schema();

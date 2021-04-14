@@ -254,3 +254,26 @@ void PassengerGateway::accept(Passenger* passenger) {
         std::cout << "unknown order status for order " << order.orderID << '\n';
     }
 }
+
+void PassengerGateway::getRidesCoordinates(Passenger *passenger) {
+    auto orderStorage = make_storage("../../orders.sqlite",
+                                     make_table("orders",
+                                                make_column("orderID", &Order::orderID, primary_key()),
+                                                make_column("clientID", &Order::clientID),
+                                                make_column("driverID", &Order::driverID),
+                                                make_column("status", &Order::status),
+                                                make_column("addressFrom", &Order::addressFrom),
+                                                make_column("addressTo", &Order::addressTo),
+                                                make_column("carType", &Order::carType)));
+    orderStorage.sync_schema();
+    for (auto i : orderStorage.select(columns(&Order::orderID, &Order::driverID),
+                                      where(is_not_equal(&Order::status, "completed") and is_equal(&Order::clientID, passenger->getID())
+                                            and is_not_equal(&Order::status, "passengerCompleted") and is_not_equal(&Order::status, "lookingForDriver")))) {
+        auto order = orderStorage.get<Order>(get<0>(i));
+        std::cout << "a ride from " << order.addressFrom << " to " << order.addressTo << " is at " << PassengerGateway::getRideCoordinates(order.orderID)<< '\n';
+    }
+}
+
+std::string PassengerGateway::getRideCoordinates(int id) {
+    return "somewhere in the middle of nowhere";
+}
