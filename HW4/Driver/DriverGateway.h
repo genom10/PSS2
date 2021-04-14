@@ -30,6 +30,8 @@ public:
     static void ListFit();
     static void ListFit(Driver&);
     static void take(Driver&, int);
+
+    static void complete(Driver *driver);
 };
 
 #endif //DRIVER_DRIVERGATEWAY_H

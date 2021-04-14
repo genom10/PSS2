@@ -127,7 +127,7 @@ void driverMenu(Driver* driver){
 
 void orderMenu(Driver* driver){
     while (true) {
-        std::cout << "1 - List all requests\n2 - List requests for my car\n3 - return\n";
+        std::cout << "1 - List all requests\n2 - List requests for my car\n3 - complete a ride\n4 - return\n";
         int choice;
         std::cin >> choice;
         switch (choice) {
@@ -139,6 +139,8 @@ void orderMenu(Driver* driver){
                 confirmationMenu(driver);
                 break;
             case 3:
+                DriverGateway::complete(driver);
+            case 4:
                 return;
             default:
                 std::cout << "incorrect input\n";

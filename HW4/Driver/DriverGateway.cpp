@@ -50,8 +50,13 @@ void DriverGateway::ListFit() {
     for (auto i : orderStorage.select(columns(&Order::orderID, &Order::clientID),
                                             where(is_equal(&Order::status, "lookingForDriver")))) {
         auto order = orderStorage.get<Order>(get<0>(i));
-        auto user = userStorage.get<PassengerStorage>(get<1>(i));
-        std::cout << order.orderID << ")" << user.name << " want to ride from " << order.addressFrom << " to " << order.addressTo << " on " << order.carType << "\n";
+        try{
+            auto user = userStorage.get<PassengerStorage>(get<1>(i));
+            std::cout << order.orderID << ")" << user.name << " want to ride from " << order.addressFrom << " to " << order.addressTo << " on " << order.carType << "\n";
+        } catch (std::system_error error) {
+            std::cout << error.what() << '\n';
+            continue;
+        }
     }
     std::cout << "end of the list\n";
 }
@@ -114,4 +119,67 @@ void DriverGateway::take(Driver& driver, int take) {
     order.driverID = driver.getID();
     order.status = "driverAccepted";
     orderStorage.update(order);
+}
+
+void DriverGateway::complete(Driver* driver) {
+    auto orderStorage = make_storage("../../orders.sqlite",
+                                     make_table("orders",
+                                                make_column("orderID", &Order::orderID, primary_key()),
+                                                make_column("clientID", &Order::clientID),
+                                                make_column("driverID", &Order::driverID),
+                                                make_column("status", &Order::status),
+                                                make_column("addressFrom", &Order::addressFrom),
+                                                make_column("addressTo", &Order::addressTo),
+                                                make_column("carType", &Order::carType)));
+    orderStorage.sync_schema();
+    for (auto i : orderStorage.select(columns(&Order::orderID),
+                                      where(is_not_equal(&Order::status, "completed") and is_equal(&Order::driverID, driver->getID())
+                                            and is_not_equal(&Order::status, "driverCompleted") and is_not_equal(&Order::status, "lookingForDriver")))) {
+
+        auto order = orderStorage.get<Order>(get<0>(i));
+
+        if (order.status == "riding") {
+            std::string confirmation;
+            while (true) {
+                std::cout << "riding from " << order.addressFrom << " to " << order.addressTo
+                          << "\n do you wish to finish the ride? Y/N";
+                std::cin >> confirmation;
+                if (confirmation == "Y" || confirmation == "y") {
+                    order.status = "driverCompleted";
+                    orderStorage.update(order);
+                    std::cout << "ride completed. Waiting for user's response\n";
+                    break;
+                }
+                if (confirmation == "N" || confirmation == "n") {
+                    break;
+                }
+            }
+            if (confirmation == "N" || confirmation == "n" || confirmation == "Y" || confirmation == "y") {
+                continue;
+            }
+        }
+
+        if (order.status == "passengerCompleted") {
+            std::string confirmation;
+            while (true) {
+                std::cout << "riding from " << order.addressFrom << " to " << order.addressTo
+                          << "\n do you wish to finish the ride? Y/N";
+                std::cin >> confirmation;
+                if (confirmation == "Y" || confirmation == "y") {
+                    order.status = "completed";
+                    orderStorage.update(order);
+                    std::cout << "ride completed.\n";
+                    break;
+                }
+                if (confirmation == "N" || confirmation == "n") {
+                    break;
+                }
+            }
+            if (confirmation == "N" || confirmation == "n" || confirmation == "Y" || confirmation == "y") {
+                continue;
+            }
+        }
+
+        std::cout << "unknown order status for order " << order.orderID << '\n';
+    }
 }

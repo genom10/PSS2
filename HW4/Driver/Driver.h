@@ -14,7 +14,7 @@ using namespace sqlite_orm;
 
 
 class Driver{
-protected:
+public:
     int id;
     std::string login;
     std::string password;
