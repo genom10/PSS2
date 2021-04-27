@@ -94,7 +94,10 @@ void userMenu(Passenger* passenger){
                 Passenger::remove(passenger);
                 return;
             case 2:
-                orderMenu(passenger);
+                if (passenger->getCanOrder())
+                    orderMenu(passenger);
+                else
+                    std::cout << "somebody blocked you from ordering\n";
                 break;
             case 3:
                 activeMenu(passenger);

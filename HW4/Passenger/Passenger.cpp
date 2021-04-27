@@ -169,3 +169,20 @@ void Passenger::addOrder(int i) {
     userStorage.update(*this);
 }
 
+bool Passenger::getCanOrder() {
+    auto userStorage = make_storage("../../users.sqlite",
+                                    make_unique_index("idx_passengers_login", indexed_column(&Passenger::login).collate("BINARY").desc()),
+                                    make_table("users",
+                                               make_column("id", &Passenger::id, primary_key()),
+                                               make_column("login", &Passenger::login),
+                                               make_column("password", &Passenger::password),
+                                               make_column("name", &Passenger::name),
+                                               make_column("rating", &Passenger::rating),
+                                               make_column("paymentMethods", &Passenger::paymentMethods),
+                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                               make_column("canOrder", &Passenger::canOrder)
+                                    ));
+    userStorage.sync_schema();
+    return userStorage.get<Passenger>(id).canOrder;
+}
+

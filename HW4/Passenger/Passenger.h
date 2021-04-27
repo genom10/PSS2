@@ -31,6 +31,7 @@ protected:
         rating = 0;
         paymentMethods = "";
         pinnedAddresses = "";
+        canOrder = true;
     }
 
 public:
@@ -45,6 +46,7 @@ public:
     static Passenger reg(std::string login, std::string password, std::string name);
     static void remove(Passenger *passenger); //TODO remove from Order DB
     void addOrder(int i);
+    bool getCanOrder();
 };
 
 #endif //PASSENGER_PASSENGER_H
