@@ -170,6 +170,10 @@ void DriverGateway::complete(Driver* driver) {
             }
         }
 
+        if (order.status == "driverAccepted") {
+            std::cout << "Wait for user to accept\n";
+        }
+
         if (order.status == "passengerCompleted") {
             std::string confirmation;
             while (true) {

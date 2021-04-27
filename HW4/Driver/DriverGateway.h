@@ -34,4 +34,4 @@ public:
     static void complete(Driver *driver);
 };
 
-#endif DRIVER_DRIVERGATEWAY_H
+#endif// DRIVER_DRIVERGATEWAY_H
