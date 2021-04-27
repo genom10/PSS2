@@ -5,7 +5,7 @@
 
 
 Passenger::Passenger(
-        std::tuple<int, std::string, std::string, std::string, int, std::string, std::string> data) {
+        std::tuple<int, std::string, std::string, std::string, int, std::string, std::string, bool> data) {
         //initialization from SQLite
         this->id = std::get<0>(data);
         this->login = std::get<1>(data);
@@ -14,19 +14,22 @@ Passenger::Passenger(
         this->rating = std::get<4>(data);
         this->paymentMethods = std::get<5>(data);
         this->pinnedAddresses = std::get<6>(data);
+        this->canOrder = std::get<7>(data);
 }
 
 void Passenger::ListAll(){
     auto userStorage = make_storage("../../users.sqlite",
                                     make_unique_index("idx_passengers_login", indexed_column(&Passenger::login).collate("BINARY").desc()),
                                     make_table("users",
-                                           make_column("id", &Passenger::id, primary_key()),
-                                           make_column("login", &Passenger::login),
-                                           make_column("password", &Passenger::password),
-                                           make_column("name", &Passenger::name),
-                                           make_column("rating", &Passenger::rating),
-                                           make_column("paymentMethods", &Passenger::paymentMethods),
-                                           make_column("pinnedAddresses", &Passenger::pinnedAddresses)));
+                                               make_column("id", &Passenger::id, primary_key()),
+                                               make_column("login", &Passenger::login),
+                                               make_column("password", &Passenger::password),
+                                               make_column("name", &Passenger::name),
+                                               make_column("rating", &Passenger::rating),
+                                               make_column("paymentMethods", &Passenger::paymentMethods),
+                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                               make_column("canOrder", &Passenger::canOrder)
+                                    ));
     userStorage.sync_schema();
     for (auto i : userStorage.select(columns(&Passenger::id,
                                              &Passenger::login,
@@ -48,13 +51,15 @@ bool Passenger::fetchLogin(std::string login) {
     auto userStorage = make_storage("../../users.sqlite",
                                     make_unique_index("idx_passengers_login", indexed_column(&Passenger::login).collate("BINARY").desc()),
                                     make_table("users",
-                                           make_column("id", &Passenger::id, primary_key()),
-                                           make_column("login", &Passenger::login),
-                                           make_column("password", &Passenger::password),
-                                           make_column("name", &Passenger::name),
-                                           make_column("rating", &Passenger::rating),
-                                           make_column("paymentMethods", &Passenger::paymentMethods),
-                                           make_column("pinnedAddresses", &Passenger::pinnedAddresses)));
+                                               make_column("id", &Passenger::id, primary_key()),
+                                               make_column("login", &Passenger::login),
+                                               make_column("password", &Passenger::password),
+                                               make_column("name", &Passenger::name),
+                                               make_column("rating", &Passenger::rating),
+                                               make_column("paymentMethods", &Passenger::paymentMethods),
+                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                               make_column("canOrder", &Passenger::canOrder)
+                                    ));
     userStorage.sync_schema();
 
     auto row = userStorage.select(columns(&Passenger::id,
@@ -72,13 +77,15 @@ Passenger Passenger::logIn(std::string login, std::string password) {
     auto userStorage = make_storage("../../users.sqlite",
                                     make_unique_index("idx_passengers_login", indexed_column(&Passenger::login).collate("BINARY").desc()),
                                     make_table("users",
-                                           make_column("id", &Passenger::id, primary_key()),
-                                           make_column("login", &Passenger::login),
-                                           make_column("password", &Passenger::password),
-                                           make_column("name", &Passenger::name),
-                                           make_column("rating", &Passenger::rating),
-                                           make_column("paymentMethods", &Passenger::paymentMethods),
-                                           make_column("pinnedAddresses", &Passenger::pinnedAddresses)));
+                                               make_column("id", &Passenger::id, primary_key()),
+                                               make_column("login", &Passenger::login),
+                                               make_column("password", &Passenger::password),
+                                               make_column("name", &Passenger::name),
+                                               make_column("rating", &Passenger::rating),
+                                               make_column("paymentMethods", &Passenger::paymentMethods),
+                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                               make_column("canOrder", &Passenger::canOrder)
+                                    ));
     userStorage.sync_schema();
 
     auto row = userStorage.select(columns(&Passenger::id,
@@ -87,7 +94,8 @@ Passenger Passenger::logIn(std::string login, std::string password) {
                                           &Passenger::name,
                                           &Passenger::rating,
                                           &Passenger::paymentMethods,
-                                          &Passenger::pinnedAddresses),
+                                          &Passenger::pinnedAddresses,
+                                          &Passenger::canOrder),
                                   where(is_equal(&Passenger::login, login)));
     Passenger passenger{row[0]};
     if (passenger.password == password)
@@ -106,7 +114,9 @@ Passenger Passenger::reg(std::string login, std::string password, std::string na
                                            make_column("name", &Passenger::name),
                                            make_column("rating", &Passenger::rating),
                                            make_column("paymentMethods", &Passenger::paymentMethods),
-                                           make_column("pinnedAddresses", &Passenger::pinnedAddresses)));
+                                           make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                           make_column("canOrder", &Passenger::canOrder)
+                                           ));
     userStorage.sync_schema();
 
     Passenger passenger{login, password, name};
@@ -117,7 +127,8 @@ Passenger Passenger::reg(std::string login, std::string password, std::string na
                                                 &Passenger::name,
                                                 &Passenger::rating,
                                                 &Passenger::paymentMethods,
-                                                &Passenger::pinnedAddresses),
+                                                &Passenger::pinnedAddresses,
+                                                &Passenger::canOrder),
                                         where(is_equal(&Passenger::id, id)))[0]);
 }
 
@@ -125,13 +136,15 @@ void Passenger::remove(Passenger *passenger) {
     auto userStorage = make_storage("../../users.sqlite",
                                     make_unique_index("idx_passengers_login", indexed_column(&Passenger::login).collate("BINARY").desc()),
                                     make_table("users",
-                                           make_column("id", &Passenger::id, primary_key()),
-                                           make_column("login", &Passenger::login),
-                                           make_column("password", &Passenger::password),
-                                           make_column("name", &Passenger::name),
-                                           make_column("rating", &Passenger::rating),
-                                           make_column("paymentMethods", &Passenger::paymentMethods),
-                                           make_column("pinnedAddresses", &Passenger::pinnedAddresses)));
+                                               make_column("id", &Passenger::id, primary_key()),
+                                               make_column("login", &Passenger::login),
+                                               make_column("password", &Passenger::password),
+                                               make_column("name", &Passenger::name),
+                                               make_column("rating", &Passenger::rating),
+                                               make_column("paymentMethods", &Passenger::paymentMethods),
+                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                               make_column("canOrder", &Passenger::canOrder)
+                                    ));
     userStorage.sync_schema();
 
     userStorage.remove<Passenger>(passenger->getID());
@@ -149,8 +162,10 @@ void Passenger::addOrder(int i) {
                                                make_column("name", &Passenger::name),
                                                make_column("rating", &Passenger::rating),
                                                make_column("paymentMethods", &Passenger::paymentMethods),
-                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses)));
+                                               make_column("pinnedAddresses", &Passenger::pinnedAddresses),
+                                               make_column("canOrder", &Passenger::canOrder)
+                                    ));
     userStorage.sync_schema();
-    userStorage.update(*this);//todo
+    userStorage.update(*this);
 }
 

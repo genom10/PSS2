@@ -3,7 +3,6 @@
 //
 
 #include "PassengerGateway.h"
-#include "PassengerStorage.h"
 #include "Driver.h"
 
 int PassengerGateway::makeOrder(Passenger* passenger, Order order) {
@@ -18,19 +17,6 @@ int PassengerGateway::makeOrder(Passenger* passenger, Order order) {
                                                 make_column("carType", &Order::carType)));
     orderStorage.sync_schema();
     int id = orderStorage.insert(order);
-
-
-    auto userStorage = make_storage("../../users.sqlite",
-                                    make_unique_index("idx_passengers_login", indexed_column(&PassengerStorage::login).collate("BINARY").desc()),
-                                    make_table("users",
-                                               make_column("id", &PassengerStorage::id, primary_key()),
-                                               make_column("login", &PassengerStorage::login),
-                                               make_column("password", &PassengerStorage::password),
-                                               make_column("name", &PassengerStorage::name),
-                                               make_column("rating", &PassengerStorage::rating),
-                                               make_column("orderHistory", &PassengerStorage::orderHistory),
-                                               make_column("paymentMethods", &PassengerStorage::paymentMethods),
-                                               make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses)));
 
     passenger->addOrder(id);
     //userStorage.update(passenger);

@@ -22,6 +22,7 @@ protected:
     std::string orderHistory;
     std::string paymentMethods;
     std::string pinnedAddresses;
+    bool canOrder;
     Passenger(std::string login, std::string password, std::string name){
         id = -1;
         this->login = std::move(login);
@@ -33,7 +34,7 @@ protected:
     }
 
 public:
-    Passenger(std::tuple <int, std::string, std::string, std::string, int, std::string, std::string> data);
+    Passenger(std::tuple <int, std::string, std::string, std::string, int, std::string, std::string, bool> data);
     Passenger() = default;
 
     static void ListAll();
