@@ -66,7 +66,7 @@ void PassengerGateway::listHistory(Passenger* passenger) {
                                                  make_column("name", &Driver::name),
                                                  make_column("rating", &Driver::rating),
                                                  make_column("orderHistory", &Driver::orderHistory),
-                                                 make_column("carType", &Driver::carType)));
+                                                 make_column("carTypes", &Driver::carTypes)));
     driverStorage.sync_schema();
     for (auto i : orderStorage.select(columns(&Order::orderID, &Order::driverID),
                                       where(is_equal(&Order::status, "completed") and is_equal(&Order::clientID, passenger->getID())))) {
@@ -106,7 +106,7 @@ void PassengerGateway::listActive(Passenger *passenger) {
                                                  make_column("name", &Driver::name),
                                                  make_column("rating", &Driver::rating),
                                                  make_column("orderHistory", &Driver::orderHistory),
-                                                 make_column("carType", &Driver::carType)));
+                                                 make_column("carTypes", &Driver::carTypes)));
     driverStorage.sync_schema();
     for (auto i : orderStorage.select(columns(&Order::orderID, &Order::driverID),
                                       where(is_not_equal(&Order::status, "completed") and is_equal(&Order::clientID, passenger->getID())))) {
@@ -162,7 +162,7 @@ void PassengerGateway::accept(Passenger* passenger) {
                                                  make_column("name", &Driver::name),
                                                  make_column("rating", &Driver::rating),
                                                  make_column("orderHistory", &Driver::orderHistory),
-                                                 make_column("carType", &Driver::carType)));
+                                                 make_column("carTypes", &Driver::carTypes)));
     driverStorage.sync_schema();
 
     for (auto i : orderStorage.select(columns(&Order::orderID, &Order::driverID),

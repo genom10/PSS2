@@ -30,7 +30,7 @@ void mainMenu(Driver* driver){
         Driver::ListAll();
         std::cout << "orders\n";
         DriverGateway::ListAll();
-
+        std::cout <<'\n';
         std::cout << "1 - login\n2 - register\n3 - exit\n";
         std::cin >> choice;
         switch (choice) {

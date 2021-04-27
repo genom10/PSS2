@@ -43,7 +43,8 @@ void DriverGateway::ListFit() {
                                                make_column("name", &PassengerStorage::name),
                                                make_column("rating", &PassengerStorage::rating),
                                                make_column("paymentMethods", &PassengerStorage::paymentMethods),
-                                               make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses)));
+                                               make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses),
+                                               make_column("canOrder", &PassengerStorage::canOrder)));
     orderStorage.sync_schema();
     userStorage.sync_schema();
     for (auto i : orderStorage.select(columns(&Order::orderID, &Order::clientID),
@@ -80,13 +81,18 @@ void DriverGateway::ListFit(Driver& driver) {
                                                make_column("name", &PassengerStorage::name),
                                                make_column("rating", &PassengerStorage::rating),
                                                make_column("paymentMethods", &PassengerStorage::paymentMethods),
-                                               make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses)));
+                                               make_column("pinnedAddresses", &PassengerStorage::pinnedAddresses),
+                                               make_column("canOrder", &PassengerStorage::canOrder)));
     userStorage.sync_schema();
-    for (auto i : orderStorage.select(columns(&Order::orderID, &Order::clientID),
-                                      where(is_equal(&Order::status, "lookingForDriver") and is_equal(&Order::carType, driver.getCar().getCarType())))) {
-        auto order = orderStorage.get<Order>(get<0>(i));
-        auto user = userStorage.get<PassengerStorage>(get<1>(i));
-        std::cout << order.orderID << ")" << user.name << " want to ride from " << order.addressFrom << " to " << order.addressTo << "\n";
+    for (auto car : driver.getCars()) {
+        for (auto i : orderStorage.select(columns(&Order::orderID, &Order::clientID),
+                                          where(is_equal(&Order::status, "lookingForDriver") and
+                                                is_equal(&Order::carType, car.getCarType())))) {
+            auto order = orderStorage.get<Order>(get<0>(i));
+            auto user = userStorage.get<PassengerStorage>(get<1>(i));
+            std::cout << order.orderID << ")" << user.name << " want to ride from " << order.addressFrom << " to "
+                      << order.addressTo << "\n";
+        }
     }
 }
 
@@ -110,10 +116,17 @@ void DriverGateway::take(Driver& driver, int take) {
         std::cout << "order is taken or finished\n";
         return;
     }
-    if (order.carType != driver.getCar().getCarType()){
+    bool hasFittingCar = false;
+    for (auto car : driver.getCars()){
+        if (car.getCarType() == order.carType)
+            hasFittingCar = true;
+        break;
+    }
+    if (!hasFittingCar){
         std::cout << "your car does not satisfy user's needs\n";
         return;
     }
+
     order.driverID = driver.getID();
     order.status = "driverAccepted";
     orderStorage.update(order);

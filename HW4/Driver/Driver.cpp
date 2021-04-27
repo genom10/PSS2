@@ -12,9 +12,13 @@ Driver::Driver(std::tuple<int, std::string, std::string, std::string, int, std::
     this->password = std::get<2>(data);
     this->name = std::get<3>(data);
     this->rating = std::get<4>(data);
-
     this->orderHistory = std::get<5>(data);
-    this->car.carType = std::get<6>(data);
+
+    std::stringstream ss(std::get<6>(data));
+    std::string token;
+    while (std::getline(ss, token, ',')) {
+        this->cars.push_back(Car(token));
+    }
 }
 
 void Driver::ListAll(){
@@ -27,7 +31,7 @@ void Driver::ListAll(){
                                                make_column("name", &Driver::name),
                                                make_column("rating", &Driver::rating),
                                                make_column("orderHistory", &Driver::orderHistory),
-                                               make_column("carType", &Driver::carType)));
+                                               make_column("carTypes", &Driver::carTypes)));
     driverStorage.sync_schema();
     for (auto i : driverStorage.select(columns(&Driver::id,
                                                &Driver::login,
@@ -56,7 +60,7 @@ bool Driver::fetchLogin(std::string login) {
                                                make_column("name", &Driver::name),
                                                make_column("rating", &Driver::rating),
                                                make_column("orderHistory", &Driver::orderHistory),
-                                               make_column("carType", &Driver::carType)));
+                                               make_column("carTypes", &Driver::carTypes)));
     userStorage.sync_schema();
 
     auto row = userStorage.select(columns(&Driver::id),
@@ -74,7 +78,7 @@ Driver Driver::logIn(std::string login, std::string password) {
                                                make_column("name", &Driver::name),
                                                make_column("rating", &Driver::rating),
                                                make_column("orderHistory", &Driver::orderHistory),
-                                               make_column("carType", &Driver::carType)));
+                                               make_column("carTypes", &Driver::carTypes)));
     userStorage.sync_schema();
 
     auto row = userStorage.select(columns(&Driver::id,
@@ -83,7 +87,7 @@ Driver Driver::logIn(std::string login, std::string password) {
                                           &Driver::name,
                                           &Driver::rating,
                                           &Driver::orderHistory,
-                                          &Driver::carType),
+                                          &Driver::carTypes),
                                   where(is_equal(&Driver::login, login)));
     Driver passenger{row[0]};
     if (passenger.password == password)
@@ -102,7 +106,7 @@ Driver Driver::reg(std::string login, std::string password, std::string name, st
                                                make_column("name", &Driver::name),
                                                make_column("rating", &Driver::rating),
                                                make_column("orderHistory", &Driver::orderHistory),
-                                               make_column("carType", &Driver::carType)));
+                                               make_column("carType", &Driver::carTypes)));
     driverStorage.sync_schema();
 
     Driver driver{login, password, name, carType};
@@ -113,7 +117,7 @@ Driver Driver::reg(std::string login, std::string password, std::string name, st
                                                 &Driver::name,
                                                 &Driver::rating,
                                                 &Driver::orderHistory,
-                                                &Driver::carType),
+                                                &Driver::carTypes),
                                         where(is_equal(&Driver::id, id)))[0]);
 }
 
@@ -127,7 +131,7 @@ void Driver::remove(Driver *passenger) {
                                                make_column("name", &Driver::name),
                                                make_column("rating", &Driver::rating),
                                                make_column("orderHistory", &Driver::orderHistory),
-                                               make_column("carType", &Driver::carType)));
+                                               make_column("carType", &Driver::carTypes)));
     userStorage.sync_schema();
 
     userStorage.remove<Driver>(passenger->getID());
@@ -145,7 +149,7 @@ void Driver::addOrder(int i) {
                                                make_column("name", &Driver::name),
                                                make_column("rating", &Driver::rating),
                                                make_column("orderHistory", &Driver::orderHistory),
-                                               make_column("carType", &Driver::carType)));
+                                               make_column("carType", &Driver::carTypes)));
     userStorage.sync_schema();
 
     if (orderHistory == "")
@@ -155,7 +159,7 @@ void Driver::addOrder(int i) {
     userStorage.update(*this);//todo
 }
 
-Car Driver::getCar() {
-    return car;
+std::vector<Car> Driver::getCars() {
+    return cars;
 }
 

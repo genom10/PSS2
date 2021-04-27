@@ -21,24 +21,30 @@ public:
     std::string name;
     int rating;
     std::string orderHistory;
-    Car car;
-    std::string carType;
-    Driver(std::string login, std::string password, std::string name, std::string carType){
+    std::vector<Car> cars;
+    std::string carTypes;
+    Driver(std::string login, std::string password, std::string name, std::string carTypes){
         id = -1;
         this->login = std::move(login);
         this->password = std::move(password);
         this->name = std::move(name);
         rating = 0;
         orderHistory = "";
-        car.carType = carType;
-        this->carType = carType;
+
+        std::stringstream ss(carTypes);
+        std::string token;
+        while (std::getline(ss, token, ',')) {
+            cars.push_back(Car(token));
+        }
+
+        this->carTypes = carTypes;
     }
 
 public:
     Driver(std::tuple <int, std::string, std::string, std::string, int, std::string, std::string>);
     Driver() = default;
 
-    Car getCar();
+    std::vector<Car> getCars();
     static void ListAll();
     int getID() const;
     int getRating() const;

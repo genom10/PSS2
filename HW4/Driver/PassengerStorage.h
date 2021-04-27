@@ -16,6 +16,7 @@ struct PassengerStorage{
     std::string orderHistory;
     std::string paymentMethods;
     std::string pinnedAddresses;
+    bool canOrder;
 };
 
 

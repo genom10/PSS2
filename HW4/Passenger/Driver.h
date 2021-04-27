@@ -16,7 +16,7 @@ public:
     std::string name;
     int rating;
     std::string orderHistory;
-    std::string carType;//todo replace with carTypes
+    std::string carTypes;
 };
 
 
