@@ -4,8 +4,10 @@ Each folder contains .pdf document with corresponding task as well as .cpp solut
 All progams are targeted for C++17 and run with default set of dependencies.
 Ready-to-go executables and test files of each HW are placed in corresponding `cmake-build-debug`
 
-## Shortcuts for .cpp files:
+## Shortcuts to tasks and solutions:
 * **HW1**
-[`Task`](https://github.com/genom10/PSS2/blob/HW1/HW1/PSS2_hw_01.pdf) [`Solution`](https://github.com/genom10/PSS2/blob/HW1/HW1/main.cpp)
+[`Task`](HW1/PSS2_hw_01.pdf) [`Solution`](HW1/main.cpp)
 * **HW2**
-[`Task`](https://github.com/genom10/PSS2/blob/HW2/HW2/PSS2_hw_02_access.pdf)
+[`Task`](HW2/PSS2_hw_02_access.pdf)
+* **HW3**
+[`Task`](HW3/PSS2_hw_03_addition.pdf)
